@@ -62,19 +62,51 @@ test('TC06 - Verify Light and Dark Theme', async ({ page }) => {
     await expect(themeButton).toContainText('Dark');
 });
 
+test('TC07 - Verify FAQ Accordion functionality', async ({ page }) => {
+    await page.goto(BaseURL, { waitUntil: 'domcontentloaded' });
 
+    const faqQuestions = [
+        'Who can apply for PMSSS Scholarship?',
+        'What documents are required?',
+        'How can I track my application status?',
+        'How is eligibility determined?'
+    ];
 
+    for (const question of faqQuestions) {
+        const faqButton = page.getByRole('button', { name: question });
+        await expect(faqButton).toBeVisible();
+        await faqButton.click();
+    }
+});
 
+test('TC08 - Verify Footer Quick Links and Resources', async ({ page }) => {
+    await page.goto(BaseURL, { waitUntil: 'domcontentloaded' });
+    const footer = page.locator('footer');
 
-// import { test, expect } from '@playwright/test';
+    // Quick Links
+    await expect(footer.getByRole('link', { name: 'Home', exact: true })).toHaveAttribute('href', '/');
+    await expect(footer.getByRole('link', { name: 'Eligibility', exact: true })).toHaveAttribute('href', '#eligibility');
+    await expect(footer.getByRole('link', { name: 'Application Process', exact: true })).toHaveAttribute('href', '#process');
+    await expect(footer.getByRole('link', { name: 'Help', exact: true })).toHaveAttribute('href', '#help');
+    await expect(footer.getByRole('link', { name: 'Contact', exact: true })).toHaveAttribute('href', '#contact');
 
-// test('test', async ({ page }) => {
-//   await page.goto('https://prime-minister-special-scholarship-portal.onrender.com/');
-//   await page.locator('#nav-register-btn').click();
-//   await page.locator('#nav-login-btn').click();
-//   await page.locator('#hero-status-btn').click();
-//   await page.locator('#hero-start-btn').click();
-//   await page.getByRole('button', { name: 'Dark' }).click();
-//   await page.getByRole('button', { name: 'Dark' }).click();
-// });
+    // Resources
+    await expect(footer.getByRole('link', { name: 'User Manual', exact: true })).toHaveAttribute('href', '#manual');
+    await expect(footer.getByRole('link', { name: 'Guidelines', exact: true })).toHaveAttribute('href', '#guidelines');
+    await expect(footer.getByRole('link', { name: 'FAQ', exact: true })).toHaveAttribute('href', '#faq');
+});
+
+test('TC09 - Verify Footer Contact Info and Legal Links', async ({ page }) => {
+    await page.goto(BaseURL, { waitUntil: 'domcontentloaded' });
+    const footer = page.locator('footer');
+
+    // Contact Information
+    await expect(footer.getByText('help@pmsss.gov.in')).toBeVisible();
+    await expect(footer.getByText('1800-123-4567')).toBeVisible();
+    await expect(footer.getByText('Mon - Sat: 10:00 AM - 6:00 PM')).toBeVisible();
+
+    // Legal Links
+    await expect(footer.getByRole('link', { name: 'Privacy Policy' })).toHaveAttribute('href', '#privacy');
+    await expect(footer.getByRole('link', { name: 'Terms & Conditions' })).toHaveAttribute('href', '#terms');
+});
 
