@@ -32,14 +32,14 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    // baseURL: 'http://localhost:3000',
+    baseURL: 'https://prime-minister-special-scholarship-portal.onrender.com',
 
     /* Maximum time each navigation can take */
     navigationTimeout: 45000,
-    actionTimeout: 15000,
+    actionTimeout: 30000,
 
     /* Collect trace for every test execution. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on',
+    trace: 'on-first-retry',
     /* Disable GPU acceleration to prevent Chromium / Inspector crashes */
     launchOptions: {
       args: ['--disable-gpu', '--disable-software-rasterizer', '--no-sandbox'],
