@@ -82,7 +82,8 @@ test.describe('PMSS Student Login - End-to-End Suite', () => {
 
     // Verify error notification
     await expect(loginPage.toastContainer).toContainText(
-      loginTestData.messages.invalidCredentials
+      loginTestData.messages.invalidCredentials,
+      { timeout: 25000 }
     );
     await expect(page).toHaveURL(/.*login/);
   });

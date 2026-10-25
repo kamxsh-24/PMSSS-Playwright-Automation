@@ -4,17 +4,17 @@
  * Test data sets for the Student Login test suite
  */
 export const loginTestData = {
-  // Valid student credentials
+  // Valid student credentials (supports process.env with verified defaults)
   validStudent: {
-    email: 'kamesh@gmail.com',
-    password: 'Kamesh@123',
-    expectedName: 'Kamesh',
+    email: process.env.TEST_USER_EMAIL || 'pmss.test.student@example.com',
+    password: process.env.TEST_USER_PASSWORD || 'Password@123',
+    expectedName: 'Test Automation Student',
   },
 
-  // Invalid password scenario (user provided lowercase password)
+  // Invalid password scenario with registered user
   invalidPassword: {
-    email: 'kamesh@gmail.com',
-    password: 'kamesh@123',
+    email: process.env.TEST_USER_EMAIL || 'pmss.test.student@example.com',
+    password: 'WrongPassword@123',
   },
 
   // Completely unregistered email

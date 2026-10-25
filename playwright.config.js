@@ -32,11 +32,15 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: 'https://prime-minister-special-scholarship-portal.onrender.com',
+    baseURL: process.env.BASE_URL || 'https://prime-minister-special-scholarship-portal.onrender.com',
 
     /* Maximum time each navigation can take */
     navigationTimeout: 45000,
     actionTimeout: 30000,
+
+    /* Failure artifacts */
+    screenshot: 'only-on-failure',
+    video: 'retain-on-failure',
 
     /* Collect trace for every test execution. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',

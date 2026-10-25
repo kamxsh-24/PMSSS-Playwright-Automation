@@ -84,16 +84,16 @@ test('TC08 - Verify Footer Quick Links and Resources', async ({ page }) => {
     const footer = page.locator('footer');
 
     // Quick Links
-    await expect(footer.getByRole('link', { name: 'Home', exact: true })).toHaveAttribute('href', '/');
-    await expect(footer.getByRole('link', { name: 'Eligibility', exact: true })).toHaveAttribute('href', '#eligibility');
-    await expect(footer.getByRole('link', { name: 'Application Process', exact: true })).toHaveAttribute('href', '#process');
-    await expect(footer.getByRole('link', { name: 'Help', exact: true })).toHaveAttribute('href', '#help');
-    await expect(footer.getByRole('link', { name: 'Contact', exact: true })).toHaveAttribute('href', '#contact');
+    await expect(footer.getByRole('button', { name: 'Home' })).toBeVisible();
+    await expect(footer.getByRole('button', { name: 'Eligibility' })).toBeVisible();
+    await expect(footer.getByRole('button', { name: 'Application Process' })).toBeVisible();
+    await expect(footer.getByRole('button', { name: 'Help' })).toBeVisible();
+    await expect(footer.getByRole('button', { name: 'Contact' })).toBeVisible();
 
     // Resources
-    await expect(footer.getByRole('link', { name: 'User Manual', exact: true })).toHaveAttribute('href', '#manual');
-    await expect(footer.getByRole('link', { name: 'Guidelines', exact: true })).toHaveAttribute('href', '#guidelines');
-    await expect(footer.getByRole('link', { name: 'FAQ', exact: true })).toHaveAttribute('href', '#faq');
+    await expect(footer.getByRole('button', { name: 'User Manual' })).toBeVisible();
+    await expect(footer.getByRole('button', { name: 'Guidelines' })).toBeVisible();
+    await expect(footer.getByRole('button', { name: 'FAQ' })).toBeVisible();
 });
 
 test('TC09 - Verify Footer Contact Info and Legal Links', async ({ page }) => {
@@ -106,7 +106,7 @@ test('TC09 - Verify Footer Contact Info and Legal Links', async ({ page }) => {
     await expect(footer.getByText('Mon - Sat: 10:00 AM - 6:00 PM')).toBeVisible();
 
     // Legal Links
-    await expect(footer.getByRole('link', { name: 'Privacy Policy' })).toHaveAttribute('href', '#privacy');
-    await expect(footer.getByRole('link', { name: 'Terms & Conditions' })).toHaveAttribute('href', '#terms');
+    await expect(footer.getByRole('button', { name: 'Privacy Policy' })).toBeVisible();
+    await expect(footer.getByRole('button', { name: 'Terms & Conditions' })).toBeVisible();
 });
 

@@ -45,6 +45,7 @@ export class LoginPage {
   async login(email, password) {
     if (email !== undefined) await this.emailInput.fill(email);
     if (password !== undefined) await this.passwordInput.fill(password);
+    await this.signInButton.waitFor({ state: 'visible' });
     await this.signInButton.click();
   }
 
@@ -61,6 +62,35 @@ export class LoginPage {
   async logout() {
     await this.logoutButton.waitFor({ state: 'visible', timeout: 10000 });
     await this.logoutButton.click();
+  }
+
+  /**
+   * Retrieve current authentication tokens from localStorage
+   */
+  async getAuthTokens() {
+    return await this.page.evaluate(() => ({
+      token: localStorage.getItem('pmss_token'),
+      refreshToken: localStorage.getItem('pmss_refresh'),
+      user: localStorage.getItem('pmss_user'),
+    }));
+  }
+
+  /**
+   * Check if authentication token exists in storage
+   */
+  async isLoggedIn() {
+    return await this.page.evaluate(() => !!localStorage.getItem('pmss_token'));
+  }
+
+  /**
+   * Manually purge authentication session from localStorage
+   */
+  async clearSession() {
+    await this.page.evaluate(() => {
+      localStorage.removeItem('pmss_token');
+      localStorage.removeItem('pmss_refresh');
+      localStorage.removeItem('pmss_user');
+    });
   }
 }
 
