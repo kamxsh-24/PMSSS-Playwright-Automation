@@ -53,3 +53,4 @@ export class DashboardPage {
     await this.logoutBtn.click();
   }
 }
+

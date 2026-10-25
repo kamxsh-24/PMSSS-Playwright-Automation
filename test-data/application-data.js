@@ -57,3 +57,4 @@ export const studentApplicationData = {
     'Admission Proof / Photo',
   ],
 };
+

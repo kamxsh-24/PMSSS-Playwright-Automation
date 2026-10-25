@@ -29,3 +29,4 @@ export class ProfilePage {
     await this.page.goto('/dashboard/profile', { waitUntil: 'domcontentloaded' });
   }
 }
+

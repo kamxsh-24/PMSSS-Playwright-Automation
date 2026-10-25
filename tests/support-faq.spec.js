@@ -12,3 +12,4 @@ test.describe('PMSS Help, Support & AI Chatbot - End-to-End Suite', () => {
     await expect(authenticatedPage.locator('main')).toBeVisible();
   });
 });
+

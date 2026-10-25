@@ -33,3 +33,4 @@ export class DocumentsPage {
     await this.page.goto('/dashboard', { waitUntil: 'domcontentloaded' });
   }
 }
+

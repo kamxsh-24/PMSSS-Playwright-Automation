@@ -32,3 +32,4 @@ export class ApplicationPage {
     await this.saveAndContinueBtn.click();
   }
 }
+

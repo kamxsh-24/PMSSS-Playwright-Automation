@@ -30,3 +30,4 @@ export class ApplicationStatusPage {
     await this.continueApplicationBtn.click();
   }
 }
+

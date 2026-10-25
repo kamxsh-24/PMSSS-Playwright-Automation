@@ -17,3 +17,4 @@ test.describe('PMSS Scholarship Application - End-to-End Suite', () => {
     await expect(applicationPage.saveAndContinueBtn).toBeVisible();
   });
 });
+

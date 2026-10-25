@@ -19,3 +19,4 @@ test.describe('PMSS Application Status & Verification Tracking - End-to-End Suit
     await expect(statusPage.continueApplicationBtn).toBeVisible();
   });
 });
+
