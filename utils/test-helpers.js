@@ -52,17 +52,15 @@ export async function loginViaUI(
 }
 
 /**
- * Inject authenticated session directly into localStorage for fast and stable testing
+ * Inject authenticated session directly via addInitScript before any page loads
+ * Runs in 0ms without extra HTTP requests or navigations
  * @param {import('@playwright/test').Page} page
  */
 export async function injectStudentSession(page) {
   const session = await getVerifiedStudentSession();
 
-  // Navigate to login page first to establish origin context
-  await page.goto('/login', { waitUntil: 'domcontentloaded' });
-
   if (session && session.token) {
-    await page.evaluate(({ t, r, u }) => {
+    await page.addInitScript(({ t, r, u }) => {
       localStorage.setItem('pmss_token', t);
       localStorage.setItem('pmss_refresh', r);
       localStorage.setItem('pmss_user', JSON.stringify(u));
@@ -84,4 +82,3 @@ export async function clearAuthSession(page) {
     localStorage.removeItem('pmss_user');
   });
 }
-
