@@ -12,7 +12,7 @@ export class DashboardPage {
 
     // Header controls
     this.themeToggleBtn = page.getByRole('button', { name: /Dark|Light/i }).first();
-    this.notificationBtn = page.locator('#header-notification-btn').or(page.getByRole('button', { name: /Notification/i })).first();
+    this.notificationBtn = page.locator('#header-notification-btn');
     this.profileMenuBtn = page.locator('#header-profile-menu-btn').or(page.getByText('Test Automation Student')).first();
     this.logoutBtn = page.locator('#pmss-logout-btn').or(page.getByRole('button', { name: 'Logout' })).or(page.getByText('Logout')).first();
 

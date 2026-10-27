@@ -24,10 +24,10 @@ export default defineConfig({
   workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
-  /* Timeout for each test in milliseconds */
-  timeout: 60000,
+  /* Timeout for each test in milliseconds (hardened for Render free-tier cold starts) */
+  timeout: 90000,
   expect: {
-    timeout: 10000,
+    timeout: 15000,
   },
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
@@ -35,8 +35,8 @@ export default defineConfig({
     baseURL: process.env.BASE_URL || 'https://prime-minister-special-scholarship-portal.onrender.com',
 
     /* Maximum time each navigation can take */
-    navigationTimeout: 45000,
-    actionTimeout: 30000,
+    navigationTimeout: 60000,
+    actionTimeout: 35000,
 
     /* Failure artifacts */
     screenshot: 'only-on-failure',

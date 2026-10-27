@@ -9,10 +9,9 @@ import { LoginPage } from '../pages/LoginPage.js';
 import { injectStudentSession } from '../utils/test-helpers.js';
 
 export const test = baseTest.extend({
-  // Authenticated page fixture: injects verified student auth session
+  // Authenticated page fixture: injects verified student auth session via addInitScript
   authenticatedPage: async ({ page }, use) => {
     await injectStudentSession(page);
-    await page.goto('/dashboard', { waitUntil: 'domcontentloaded' });
     await use(page);
   },
 
@@ -48,4 +47,3 @@ export const test = baseTest.extend({
 });
 
 export { expect } from '@playwright/test';
-
