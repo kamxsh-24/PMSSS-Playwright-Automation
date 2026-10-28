@@ -15,9 +15,9 @@ export class ApplicationPage {
     this.schemeSubtitle = page.getByText(/Prime Minister Special Scholarship Scheme/i).first();
     this.sectionOneHeading = page.getByText(/PERSONAL INFORMATION/i).first();
 
-    // Step indicators
-    this.stepOneIndicator = page.getByText(/01 Personal/i).first();
-    this.stepTwoIndicator = page.getByText(/02 Address/i).first();
+    // Step indicators — use the visible section headings (the compact step labels are clipped inside overflow:hidden stepper)
+    this.stepOneIndicator = page.getByText(/01 PERSONAL INFORMATION/i).first();
+    this.stepTwoIndicator = page.getByText(/02 ADDRESS/i).or(page.getByText(/PERSONAL INFORMATION/i)).first();
 
     // Form Action Controls
     this.saveAndContinueBtn = page.getByRole('button', { name: /Save & Continue|Continue/i }).first();

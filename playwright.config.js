@@ -14,6 +14,8 @@ import { defineConfig, devices } from '@playwright/test';
  */
 export default defineConfig({
   testDir: './tests',
+  /* Global setup: warms up Render free-tier instances before any tests run */
+  globalSetup: './utils/global-setup.js',
   /* Run tests sequentially to prevent server connection drops */
   fullyParallel: false,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -24,7 +26,7 @@ export default defineConfig({
   workers: 1,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
-  /* Timeout for each test in milliseconds (hardened for Render free-tier cold starts) */
+  /* Timeout for each test in milliseconds */
   timeout: 90000,
   expect: {
     timeout: 15000,
@@ -96,4 +98,3 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-
